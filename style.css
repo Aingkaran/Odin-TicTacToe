@@ -1,0 +1,43 @@
+.title {
+    font-weight: bold;
+    font-size: 15vh;
+}
+
+
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+
+.container{
+    background-color: white;
+    width: 51vh;
+    height: 51vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+   
+}
+
+
+.box {
+    width: 200px;
+    width: 15vh;
+    height: 15vh;
+    border-style: solid;
+    border-color: black;
+    border-width: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12vh;
+
+}
