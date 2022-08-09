@@ -1,28 +1,8 @@
 const gameBoard = (()=>{
 
-    const gameBox= [1,2,3,
-                    4,5,6,
-                    7,8,9]
-    return {
-        gameBox
-    }
-
-})()
-
-
-
-const Player= (name,choice) =>{
-
-    const getName= name;
-
-    const getChoice = choice;
-
-    return (getName,getChoice)
-
-};
-
-
-const displayController =(()=>{
+    const gameBox= ["O","X","X",
+                    "O","X","O",
+                    "X","O","X"]
 
     const displayXO=()=>{
         const displayBox= document.querySelectorAll('.box')
@@ -30,7 +10,6 @@ const displayController =(()=>{
         for (let i=0;i<gameBoard.gameBox.length;i++){
             if (box.id==i){
             box.textContent= gameBoard.gameBox[i]
-            console.log(box.id);
                 }
 
             }
@@ -38,6 +17,42 @@ const displayController =(()=>{
 
         })
     }
-    return {displayXO}
+    return {
+        gameBox,
+        displayXO
+    }
 
 })()
+
+
+
+const Player= (name, symbol) =>{
+
+    const getName= name;
+    const getSymbol= symbol;
+    const getChoice= ()=>{
+        const boxChosen= document.querySelectorAll(".box")
+        boxChosen.forEach((box)=>{
+            box.addEventListener('click', ()=>{
+                const playerChoice = box.id;
+                console.log(playerChoice)
+                return playerChoice
+
+        })
+    })
+}
+    return {getName,getSymbol,getChoice}
+
+};
+
+
+const displayController =(()=>{
+    
+
+    
+
+})()
+
+gameBoard.displayXO()
+const jimmie = Player('jim',"X");
+jimmie.getChoice()
