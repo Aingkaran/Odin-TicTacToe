@@ -24,7 +24,20 @@ const Player= (name,choice) =>{
 
 const displayController =(()=>{
 
+    const displayXO=()=>{
+        const displayBox= document.querySelectorAll('.box')
+        displayBox.forEach((box)=>{
+        for (let i=0;i<gameBoard.gameBox.length;i++){
+            if (box.id==i){
+            box.textContent= gameBoard.gameBox[i]
+            console.log(box.id);
+                }
+
+            }
     
 
+        })
+    }
+    return {displayXO}
 
 })()
