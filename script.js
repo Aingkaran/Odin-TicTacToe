@@ -1,8 +1,8 @@
 const gameBoard = (()=>{
 
-    const gameBox= ["O","X","X",
-                    "O","X","O",
-                    "X","O","X"]
+    const gameBox= [,,,
+                    ,,,
+                    ,,]
 
     const displayXO=()=>{
         const displayBox= document.querySelectorAll('.box')
@@ -26,33 +26,67 @@ const gameBoard = (()=>{
 
 
 
+
 const Player= (name, symbol) =>{
 
     const getName= name;
     const getSymbol= symbol;
-    const getChoice= ()=>{
-        const boxChosen= document.querySelectorAll(".box")
-        boxChosen.forEach((box)=>{
-            box.addEventListener('click', ()=>{
-                const playerChoice = box.id;
-                console.log(playerChoice)
-                return playerChoice
-
-        })
-    })
-}
-    return {getName,getSymbol,getChoice}
+   
+    
+    return {getName,getSymbol}
 
 };
 
 
-const displayController =(()=>{
-    
+
+
+const Game =(()=>{
+  
+
+    const gameWinner=(Player1,Player2)=>{
+
+            let count= 0;
+            const boxChosen= document.querySelectorAll(".box")
+
+
+                    boxChosen.forEach((box)=>{
+                        box.addEventListener('click', ()=>{
+                            const playerChoice = box.id;
+                            if (count==0){
+
+                                gameBoard.gameBox[box.id]="X"
+                                gameBoard.displayXO()
+                                console.log("works")
+                                count=count+1
+
+                            }
+                            
+                            else {
+                                gameBoard.gameBox[box.id]="O"
+                                gameBoard.displayXO()
+                                console.log("works")
+
+                            }
+                                   
+                    
+                            
+                            
+            
+                    })
+                })
+        
+              
+               
+            
+        
+    }
+
 
     
-
+    return {gameWinner} 
+        
 })()
 
-gameBoard.displayXO()
 const jimmie = Player('jim',"X");
-jimmie.getChoice()
+const steph= Player('steph',"O")
+Game.gameWinner(jimmie,steph)
