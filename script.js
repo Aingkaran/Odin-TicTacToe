@@ -52,7 +52,7 @@ const Game =(()=>{
                     boxChosen.forEach((box)=>{
                         box.addEventListener('click', ()=>{
                             const playerChoice = box.id;
-                            if (count==0){
+                            if (count==0||count==2||count==4||count==6||count==8){
 
                                 gameBoard.gameBox[box.id]="X"
                                 gameBoard.displayXO()
@@ -60,13 +60,22 @@ const Game =(()=>{
                                 count=count+1
 
                             }
-                            
-                            else {
+
+                            else if(count==1||count==3||count==5||count==7||count==9) {
                                 gameBoard.gameBox[box.id]="O"
                                 gameBoard.displayXO()
                                 console.log("works")
-
+                                count=count+1
                             }
+
+                            else{
+
+                                console.log("Game DONE")
+                            }
+                            
+                            
+
+
                                    
                     
                             
