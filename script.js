@@ -19,7 +19,9 @@ const gameBoard = (()=>{
     const resetGame=()=>{
         const resetBtn= document.querySelector(".Game-Reset")
         resetBtn.addEventListener('click', ()=>{
-            
+            const gameText= document.querySelector(".in-game-text")
+
+            gameText.textContent="Submit Your Names To Begin!!"
             gameBoard.gameBox=[,,,,,,,,,]
             Game.count=0
             Game.Xcount=0
@@ -33,6 +35,8 @@ const gameBoard = (()=>{
 
     const gameWinner= [["X","X","X"],["O","O","O"]]
 
+    
+
     return {
         gameBox,
         displayXO,
@@ -45,13 +49,13 @@ const gameBoard = (()=>{
 
 
 
-const Player= (name, symbol) =>{
+const Player= (name) =>{
 
     const getName= name;
-    const getSymbol= symbol;
+ 
    
     
-    return {getName,getSymbol}
+    return {getName}
 
 };
 
@@ -62,9 +66,12 @@ const Game =(()=>{
     
     let count= 0;
     let Xcount=0;
-    const gameWinner=(Player1,Player2)=>{
 
-            
+    const gameWinner=(Player1,Player2)=>{
+        
+        
+
+            const gameText= document.querySelector(".in-game-text")
             const boxChosen= document.querySelectorAll(".box")
             
 
@@ -75,7 +82,7 @@ const Game =(()=>{
                             if (Game.count==0){
                        
                                 if(gameBoard.gameBox[box.id]=="X"||gameBoard.gameBox[box.id]=="O"){
-                                    console.log("Choose another square")
+                                    gameText.textContent="Choose Another Square!"
                                     
                                     
                                 }
@@ -83,6 +90,7 @@ const Game =(()=>{
                                     gameBoard.gameBox[box.id]="X"
                                     gameBoard.displayXO()
                                     Game.count=Game.count+1
+                                    gameText.textContent= Player2.getName +" Turn!"
                                     if (gameBoard.gameBox.slice(0,3).toString()===gameBoard.gameWinner[0].toString()||gameBoard.gameBox.slice(0,3).toString()===gameBoard.gameWinner[1].toString()
                                     ||gameBoard.gameBox.slice(3,6).toString()===gameBoard.gameWinner[0].toString()||gameBoard.gameBox.slice(3,6).toString()===gameBoard.gameWinner[1].toString()
                                     ||gameBoard.gameBox.slice(6,9).toString()===gameBoard.gameWinner[0].toString()||gameBoard.gameBox.slice(6,9).toString()===gameBoard.gameWinner[1].toString()
@@ -92,14 +100,14 @@ const Game =(()=>{
                                     ||(gameBoard.gameBox[0]+gameBoard.gameBox[4]+gameBoard.gameBox[8]).toString()===gameBoard.gameWinner[0].toString().replace(/,/g, '')|| (gameBoard.gameBox[0]+gameBoard.gameBox[4]+gameBoard.gameBox[8]).toString()===gameBoard.gameWinner[1].toString().replace(/,/g, '')
                                     ||(gameBoard.gameBox[2]+gameBoard.gameBox[4]+gameBoard.gameBox[6]).toString()===gameBoard.gameWinner[0].toString().replace(/,/g, '')|| (gameBoard.gameBox[2]+gameBoard.gameBox[4]+gameBoard.gameBox[6]).toString()===gameBoard.gameWinner[1].toString().replace(/,/g, '')
                                     ){
-                                        console.log("You WIN")
+                                        gameText.textContent= Player1.getName +" Wins!"
                                         Game.count=2
                                     }
                                     
                                     else{
                                         Game.Xcount=Game.Xcount+1
                                         if (Game.Xcount==5){
-                                            console.log("TIE")
+                                            gameText.textContent="TIE GAME!"
                                         }
                                     }
                                     
@@ -115,7 +123,7 @@ const Game =(()=>{
                                 
 
                                 if (gameBoard.gameBox[box.id]=="X"||gameBoard.gameBox[box.id]=="O"){
-                                    console.log("Choose another square")
+                                    gameText.textContent="Choose Another Square!"
                                 }
 
 
@@ -124,6 +132,7 @@ const Game =(()=>{
                                     gameBoard.gameBox[box.id]="O"
                                     gameBoard.displayXO()
                                     Game.count=Game.count-1
+                                    gameText.textContent= Player1.getName +" Turn!"
 
                                     if (gameBoard.gameBox.slice(0,3).toString()===gameBoard.gameWinner[0].toString()||gameBoard.gameBox.slice(0,3).toString()===gameBoard.gameWinner[1].toString()
                                     ||gameBoard.gameBox.slice(3,6).toString()===gameBoard.gameWinner[0].toString()||gameBoard.gameBox.slice(3,6).toString()===gameBoard.gameWinner[1].toString()
@@ -134,19 +143,13 @@ const Game =(()=>{
                                     ||(gameBoard.gameBox[0]+gameBoard.gameBox[4]+gameBoard.gameBox[8]).toString()===gameBoard.gameWinner[0].toString().replace(/,/g, '')|| (gameBoard.gameBox[0]+gameBoard.gameBox[4]+gameBoard.gameBox[8]).toString()===gameBoard.gameWinner[1].toString().replace(/,/g, '')
                                     ||(gameBoard.gameBox[2]+gameBoard.gameBox[4]+gameBoard.gameBox[6]).toString()===gameBoard.gameWinner[0].toString().replace(/,/g, '')|| (gameBoard.gameBox[2]+gameBoard.gameBox[4]+gameBoard.gameBox[6]).toString()===gameBoard.gameWinner[1].toString().replace(/,/g, '')
                                     ){
-                                        console.log("You WIN")
+                                        gameText.textContent= Player2.getName+" Wins!"
                                         Game.count=3
                                     }
                                 }
                                 
                             }
 
-                           
-                            
-
-
-                                   
-                    
                             
                             
             
@@ -165,6 +168,19 @@ const Game =(()=>{
         
 })()
 gameBoard.resetGame();
-const jimmie = Player('jim',"X");
-const steph= Player('steph',"O")
-Game.gameWinner(jimmie,steph)
+const jimmie = Player(
+    
+
+
+);
+
+let Player1=""
+let Player2=""
+const playerBtn= document.querySelector(".Player-Submit")
+        playerBtn.addEventListener('click', ()=>{
+            Player1= Player(document.getElementById('Player1').value)
+            Player2= Player(document.getElementById('Player2').value)
+            Game.gameWinner(Player1,Player2)
+            
+        })
+

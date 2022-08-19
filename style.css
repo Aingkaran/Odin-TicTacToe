@@ -5,7 +5,7 @@
 
 
 .Game-Reset{
-    margin-top: 7vh;
+    margin-top: 3vh;
     font-size: 4vh;
     font-weight: bold;
     border-radius: 20px;
@@ -20,8 +20,9 @@ body{
     gap: 5vh;
 }
 
-.container{
+.box-container{
     background-color: white;
+    margin-top: 2vh;
     width: 51vh;
     height: 51vh;
     display: grid;
@@ -31,6 +32,13 @@ body{
     align-content: center;
     align-items: center;
    
+}
+
+.container{
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -47,3 +55,19 @@ body{
     font-size: 12vh;
 
 }
+
+.bottom-container{
+    margin-top: 3vh;
+    gap: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.in-game-text{
+    font-size: 3vh;
+    font-weight: bold;
+    color: blue
+}
+

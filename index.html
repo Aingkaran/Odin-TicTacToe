@@ -11,22 +11,40 @@
 <body>
     <div class="title">Ultimate Tic-Tac-Toe</div>
     <div class="container">
-        <div class="box" id="0"></div>
-        <div class="box" id="1"></div>
-        <div class="box" id="2"></div>
-        <div class="box" id="3"></div>
-        <div class="box" id="4"></div>
-        <div class="box" id="5"></div>
-        <div class="box" id="6"></div>
-        <div class="box" id="7"></div>
-        <div class="box" id="8"></div>
+        <div class="box-container">
+            <div class="box" id="0"></div>
+            <div class="box" id="1"></div>
+            <div class="box" id="2"></div>
+            <div class="box" id="3"></div>
+            <div class="box" id="4"></div>
+            <div class="box" id="5"></div>
+            <div class="box" id="6"></div>
+            <div class="box" id="7"></div>
+            <div class="box" id="8"></div>
+
+        </div>
+ 
 
         <div class="player-container">
             <div class="Player1"></div>
 
         </div>
-
+        <div class="bottom-container">
+        <div class="in-game-text">Submit Your Names To Begin!!</div>
+        <div class="player-container">
+          <label for="Player1"><b>Player 1:</b></label>
+          <input type="text" id= "Player1" placeholder="Name" name="title" >
+            
+          <label for="Player2"><b>Player 2:</b></label>
+          <input type="text" id= "Player2" placeholder="Name" name="title" >
+      
+        </div>
+        <button class="Player-Submit">Submit Player</button>
         <button class="Game-Reset">RESET</button>
+        
+
+        </div>
+        
 
     </div>
 </body>
